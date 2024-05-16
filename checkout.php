@@ -5,178 +5,129 @@
 <html>
     <head>
         <style>
-            @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-*
-{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+          @import url("https://fonts.googleapis.com/css?famiyl=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 10;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-body
-{
+body {
   display: flex;
-justify-content: center;
-align-items: center;
-background: linear-gradient(#4ba9e9 0,#4ba9e9 50%,#fff 50%,#fff 100%);
-min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #191629;
+}
+.card {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+.card:hover {
+  width: 600px;
+  transition-delay: 0.5s;
+}
+.card .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .circle::before {
+  content: "";
+  position: absolute;
+  top: 30;
+  left: 2;
+  right: 2;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: #191919;
+  border: 8px solid var(--clr);
+  filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+  transition: 0.5s, background 0.5s;
+  transition-delay: 0.75s, 1s;
+}
+.card:hover .circle::before {
+  transition-delay: 0.5s;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr);
+}
+.card .circle .logo {
+  position: relative;
+  width: 250px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+.card:hover .circle .logo {
+  transform: scale(0);
+  transition-delay: 0s;
+}
+.card .product_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  height: 300px;
+  transition: 0.5s ease-in-out;
+}
+.card:hover .product_img {
+  transition-delay: 0.75s;
+  top: 25%;
+  left: 72%;
+  height: 300px;
+  transform: translate(-30%, -65%) scale(1) rotate(-55deg);
+}
+.card .content {
+  position: absolute;
+  width: 50%;
+  left: 20%;
+  padding: 20px 20px 20px 20px;
+  opacity: 0;
+  transition: 0.5s;
+  visibility: hidden;
+}
+.card:hover .content {
+  transition-delay: 0.75s;
+  opacity: 1;
+  visibility: visible;
+  left: 20px;
+}
+.card .content h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2.5em;
+  line-height: 1em;
+}
+.card .content p {
+  color: #fff;
+}
+.card .content a {
+  position: relative;
+  color: #111;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+}
 
-}
-.card 
-{
-	position: relative;
-	width: 300px;
-	height: 380px;
-	background: #006400;
-	display: flex;
-	box-shadow: 0 15px 45px rgba(0,0,0,0.1);
-	overflow: hidden;
-	transition: 0.5s ease-in-out;
-}
-.card:hover 
-{
-	width: 600px;
-}
-.card .imgBx 
-{
-	position: relative;
-	min-width: 300px;
-	height: 100%;
-	background: #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 10;
-}
-.card .imgBx  img 
-{
-	max-width: 250px;
-	transition: 0.5s ease-in-out;
-}
-.card:hover .imgBx  img 
-{
-	transform: rotate(-35deg) translateX(-20px);
-}
-.card .details 
-{
-	position: absolute;
-	left: 0;
-	width: 300px;
-	height: 100%;
-	background: #006400;
-	display: flex;
-	justify-content: center;
-	padding: 20px;
-	flex-direction: column;
-	transition: 0.5s ease-in-out;
-}
-.card:hover .details 
-{
-	left: 300px;
-}
-.card .details::before 
-{
-	content: '';
-	position: absolute;
-	left: 0px;
-	width: 0; 
-  height: 0; 
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid #fff;
-	z-index: 1;
-}
-.card .details h3 
-{
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 1.5em;
-	line-height: 1em;
-}
-.card .details h3 span 
-{
-	font-size: 0.65em;
-	font-weight: 300;
-	opacity: 0.85;
-	text-transform: none;
-}
-.card .details h4 
-{
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 0.9em;
-	line-height: 1em;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-p 
-{
-	color: #fff;
-	font-size: 0.8em;
-	opacity: 0.85;
-}
-.size 
-{
-	display: flex;
-	gap: 10px;
-}
-.size li 
-{
-	list-style: none;
-	color: #fff;
-	font-size: 0.9em;
-	width: 40px;
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 2px solid #fff;
-	cursor: pointer;
-	font-weight: 500;
-	opacity: 0.5;
-}
-.size li:hover 
-{
-	background: #fff;
-	color: #4ba9e9;
-	opacity: 1;
-}
-.group 
-{
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	margin-top: 20px;
-	align-items: center;
-}
-.card .details h2 
-{
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 2em;
-}
-.card .details h2 sup 
-{
-	font-weight: 300;
-}
-.card .details h2 small 
-{
-	font-size: 0.75em;
-}
-.card .details a 
-{
-	display: inline-flex;
-	padding: 10px 25px;
-	background: #fff;
-	font-weight: 500;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: 600;
-	color: #4ba9e9;
-} @import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
+            @import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900);
 .container {
   display: flex;
@@ -259,28 +210,19 @@ font-size:16px; }
 
 
         </style>
-    </head>
-   <body>
-    <div class="card">
-        <div class="imgBx">
-            <img src="shoe.jpg">
+   <div class="card">
+        <div class="circle" style="--clr: #0cae00;">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhonjfUpSJCHpycbX3HO2ik3EYl9b-RmIQitwc4xmZYGbkqXr7wXMfqItAT6Uxpqj3b-Mh2_6HQb_tsiEsmU2YIge5zilpRhpgb3LFGa3-_DvW048munF2IqOW_bbgLIBtU_PvG7-WVLFjf-zJs_Z1GqWQnY8QAz_VaMoQl5frznIcprxp-nrqwK0HzDaw/s1200/Sprite_2022.svg.png" class="logo">
         </div>
-        <div class="details">
-            <h3>Nike Air Max<br><span>Men's Shoe</span></h3>
-            <h4>Product Details</h4>
-            <p>Jacob & Evans Footwear prides itself on blending traditional craftsmanship with contemporary design to create stylish, comfortable, and durable shoes. Our commitment to ethical sourcing and eco-friendly practices ensures quality and sustainability..</p>
-            <h4>Size</h4>
-            <ul class="size">
-                <li>36</li>
-                <li>38</li>
-                <li>40</li>
-                <li>42</li>
-                <li>44</li>
-            </ul>
-            <div class="group">
-                <h2><sup>KSH</sup>1<small>.00</small></h2>
-                <a href="#" class="buy-now" onclick="togglePaymentSection()">Buy Now</a>
+        <div class="content">
+          <h2>SPRITE</h2>
+          <p>Sprite is a revitalizing soda that awakens your senses and delights your palate. </br>Our unique fusion of lemon and lime.</p>
+          <p>coding.minku</p>
+          <button style="padding: 5px; font-size: 1em; border: 1px solid #ccc; border-radius: 4px;" onclick="togglePaymentSection()">View More</button>
 
+        </div>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD7NbtGe13bMt4t0syaaIePNP83Piyf_i4MyN0EfAMJr9iH6ZFxGPljzeUf9aBW_vvJwZBI25lCIG1g5NmR5iZ0AnchS9Jncm8F8pp6ovMSkGBKY2RIVFmTdZLW_lTerAEomw2ondZwoEwADv7zljsqZ9OD9ChdHdDm-Fsq-DK6IrVNuHp8reYZ-CP4H4/s584/sprite-drink-in-a-can-on-ice-isolated-on-white-background-FT21NP-removebg-preview.png" class="product_img">
+      </div>
             </div>
         </div>
     </div>
